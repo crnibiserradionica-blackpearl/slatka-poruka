@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slatka Poruka — kolačići sreće sa porukom</title>
+<meta name="description" content="Slatka Poruka — ručno pravljeni kolačići sreće od domaćeg keksa, sa porukom po vašem izboru. Za svadbe, krštenja, rođendane i poslovne poklone.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf8f4;
+    --cream: #f4ece2;
+    --sand: #e6d8c6;
+    --blush: #f1e1dc;
+    --text: #4a3428;
+    --muted: #7a6152;
+    --line: #e4d6c8;
+    --serif: "Lora", Georgia, "Times New Roman", serif;
+    --sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  .narrow { max-width: 620px; margin: 0 auto; }
+  section { padding: 96px 0; }
+  h1, h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: .01em;
+  }
+  h2 { font-size: clamp(1.75rem, 4.5vw, 2.25rem); line-height: 1.2; margin-bottom: 40px; text-align: center; }
+  p { margin: 0 0 1em; }
+  .eyebrow {
+    font-size: .75rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Meni */
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  [id] { scroll-margin-top: 72px; }
+  .nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-bar { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+  .nav-name { font-family: var(--serif); font-size: 1.5rem; color: var(--text); text-decoration: none; }
+  .nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; margin-right: -12px;
+    background: none; border: 0; color: var(--text); cursor: pointer;
+  }
+  .nav-toggle:focus-visible, .nav-links a:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+  .nav-toggle .x { display: none; }
+  .nav-toggle[aria-expanded="true"] .x { display: block; }
+  .nav-toggle[aria-expanded="true"] .bars { display: none; }
+  .nav-bar { flex-wrap: wrap; }
+  .nav-links { list-style: none; margin: 0; padding: 0 0 16px; display: none; width: 100%; }
+  .nav-links.open { display: block; }
+  .nav-links a {
+    display: block; padding: 14px 0;
+    color: var(--text); text-decoration: none;
+    font-size: 1.05rem; border-top: 1px solid var(--line);
+  }
+  .nav-links a:hover { color: var(--muted); }
+
+  /* 1. Naslovni deo */
+  .hero { padding: 56px 0 96px; }
+  .hero-grid { display: grid; gap: 40px; align-items: center; }
+  .hero h1 { font-size: clamp(2.6rem, 8vw, 4.2rem); line-height: 1.1; margin: 16px 0 20px; }
+  .hero .lead { font-family: var(--serif); font-style: italic; font-size: 1.25rem; line-height: 1.4; color: var(--muted); margin: 0; }
+  .hero-img { background: var(--cream); }
+  .hero-img img { width: 100%; aspect-ratio: 1050 / 938; object-fit: cover; }
+
+  /* 2. Opis */
+  .about { background: var(--cream); text-align: center; }
+  .about p { font-family: var(--serif); font-size: clamp(1.2rem, 3vw, 1.4rem); line-height: 1.55; margin: 0; }
+
+  /* 3. Šta birate */
+  .choices { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .choices li { padding: 28px 0; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+  .choices h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin: 0; }
+  .choices p { margin: 0; color: var(--muted); }
+
+  /* 4. Prilike */
+  .occasions { background: var(--blush); text-align: center; }
+  .occasion-list { list-style: none; margin: 0 auto; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 14px; max-width: 640px; }
+  .occasion-list li { padding: 10px 22px; border: 1px solid rgba(74,52,40,.22); border-radius: 999px; font-size: 1rem; }
+
+  /* 5. Galerija */
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .gallery img { width: 100%; height: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: var(--cream); }
+
+  /* 6. Kako se poručuje */
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; gap: 32px; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: baseline; }
+  .steps li::before { content: counter(s); font-family: var(--serif); font-size: 2rem; color: var(--muted); }
+  .steps h3 { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; margin: 0 0 4px; }
+  .steps p { margin: 0; color: var(--muted); }
+  .note { text-align: center; margin-top: 48px; color: var(--muted); font-size: .95rem; }
+
+  /* 7. Podnožje */
+  footer { background: var(--cream); text-align: center; padding: 88px 0 56px; }
+  footer .name { font-family: var(--serif); font-size: 2.4rem; margin: 0 0 8px; }
+  footer .tag { color: var(--muted); margin-bottom: 36px; }
+  .btn {
+    display: inline-block;
+    padding: 16px 34px;
+    min-height: 48px;
+    background: var(--text);
+    color: var(--bg);
+    text-decoration: none;
+    border-radius: 999px;
+    font-size: .95rem;
+    letter-spacing: .06em;
+  }
+  .btn:hover, .btn:focus-visible { background: #2f2019; }
+  .btn:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
+  footer small { display: block; margin-top: 64px; color: var(--muted); font-size: .8rem; }
+
+  @media (min-width: 760px) {
+    section { padding: 128px 0; }
+    .hero { padding: 80px 0 128px; }
+    .hero-grid { grid-template-columns: 1fr 1.1fr; gap: 72px; }
+    .choices { grid-template-columns: 1fr 1fr; column-gap: 56px; border-top: 0; }
+    .choices li:nth-child(-n+2) { border-top: 1px solid var(--line); }
+    .gallery { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .nav-toggle { display: none; }
+    .nav-bar { gap: 32px; }
+    .nav-bar { flex-wrap: nowrap; }
+    .nav-links, .nav-links.open { display: flex; gap: 28px; padding: 0; width: auto; }
+    .nav-links a { padding: 8px 0; border: 0; font-size: .95rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Glavni meni">
+  <div class="wrap nav-bar">
+    <a class="nav-name" href="#pocetak">Slatka Poruka</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="meni" aria-label="Otvori meni">
+      <svg class="bars" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      <svg class="x" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <ul class="nav-links" id="meni">
+      <li><a href="#sta-birate">Šta birate</a></li>
+      <li><a href="#prilike">Prilike</a></li>
+      <li><a href="#galerija">Galerija</a></li>
+      <li><a href="#porucivanje">Kako se poručuje</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="pocetak">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Ručno pravljeno</p>
+      <h1>Slatka Poruka</h1>
+      <p class="lead">Kolačići sreće sa porukom, ručno pravljeni</p>
+    </div>
+    <div class="hero-img">
+      <img src="slike/slatka-poruka-2.jpg" width="1050" height="938" fetchpriority="high"
+           alt="Kolačić sreće u providnoj kesici, vezan zlatnom mašnicom, sa nalepnicom „Thank you”">
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="about">
+    <div class="wrap narrow">
+      <p>Svaki kolačić pravimo ručno, od domaćeg keksa. U svakom se krije mala poruka — da nasmeje, obraduje ili zahvali onome ko ga otvori.</p>
+    </div>
+  </section>
+
+  <section id="sta-birate">
+    <div class="wrap">
+      <h2>Šta birate</h2>
+      <ul class="choices">
+        <li>
+          <h3>Poruke u kolačićima</h3>
+          <p>Birate neku od ponuđenih poruka ili nam šaljete svoje.</p>
+        </li>
+        <li>
+          <h3>Jestive šljokice</h3>
+          <p>Srebrne ili zlatne.</p>
+        </li>
+        <li>
+          <h3>Boja mašnice</h3>
+          <p>Više boja na izbor, da se slože sa vašom proslavom.</p>
+        </li>
+        <li>
+          <h3>Nalepnica</h3>
+          <p>„Handmade with love” ili „Thank you”.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="occasions" id="prilike">
+    <div class="wrap">
+      <h2>Za koje prilike</h2>
+      <ul class="occasion-list">
+        <li>Svadbe</li>
+        <li>Krštenja</li>
+        <li>Rođendani</li>
+        <li>Proslave</li>
+        <li>Poslovni pokloni</li>
+        <li>Zahvalnice gostima</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="galerija">
+    <div class="wrap">
+      <h2>Galerija</h2>
+      <div class="gallery">
+        <img src="slike/slatka-poruka-1.jpg" width="1080" height="875" loading="lazy"
+             alt="Kolačić sreće sa krem mašnicom na tanjiru, pored zahvalnice mladenaca">
+        <img src="slike/slatka-poruka-2.jpg" width="1050" height="938" loading="lazy"
+             alt="Kolačić sreće sa zlatnim šljokicama i zlatnom mašnicom">
+        <img src="slike/slatka-poruka-3.jpg" width="1050" height="868" loading="lazy"
+             alt="Kolačić sreće sa srebrnim šljokicama i bordo mašnicom">
+        <img src="slike/slatka-poruka-4.jpg" width="1050" height="938" loading="lazy"
+             alt="Kolačić sreće sa srebrnim šljokicama i belom mašnicom">
+        <img src="slike/slatka-poruka-5.jpg" width="988" height="729" loading="lazy"
+             alt="Svečano postavljeni stolovi u svadbenoj sali sa kolačićima na tanjirima">
+        <img src="slike/slatka-poruka-6.jpg" width="1080" height="868" loading="lazy"
+             alt="Više kolačića sreće sa zlatnim šljokicama, crvenim mašnicama i nalepnicama „Thank you”">
+      </div>
+    </div>
+  </section>
+
+  <section class="order" id="porucivanje">
+    <div class="wrap narrow">
+      <h2>Kako se poručuje</h2>
+      <ol class="steps">
+        <li>
+          <div>
+            <h3>Pišete nam na Instagramu</h3>
+            <p>Pošaljite poruku na profil @slatkaporuka.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Dogovaramo detalje</h3>
+            <p>Zajedno dogovaramo količinu, poruke, šljokice, mašnice i nalepnice.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Dogovaramo rok</h3>
+            <p>Utvrđujemo kada vam kolačići trebaju, pa krećemo sa pravljenjem.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="note">Cena na upit.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="name">Slatka Poruka</p>
+    <p class="tag">Kolačići sreće sa porukom, ručno pravljeni</p>
+    <a class="btn" href="https://instagram.com/slatkaporuka" target="_blank" rel="noopener">Poruči preko Instagrama</a>
+    <small>© Slatka Poruka</small>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('meni');
+    function setOpen(open) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Zatvori meni' : 'Otvori meni');
+      menu.classList.toggle('open', open);
+    }
+    btn.addEventListener('click', function () {
+      setOpen(btn.getAttribute('aria-expanded') !== 'true');
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  })();
+</script>
+
+</body>
+</html>
